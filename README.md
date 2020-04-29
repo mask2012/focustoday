@@ -36,15 +36,15 @@ https://chromecj.com/utilities/2018-05/1406.html
 **360官方的插件开发文档**  
 http://open.chrome.360.cn/extension_dev/overview.html
 
-**vue项目传到github小坑**
+**vue项目传到github小坑**  
 vue项目关联github仓库还挺坑，没法用git小乌龟完成，步骤如下
 1. 新建vue项目时勾选“初始化git仓库”（默认是勾选的），这样就不需要自己去git bash here然后git init了
 2. 项目内右键打开git bash here关联到github仓库 ```git remote add origin https://github.com/mask2012/focustoday.git```
 3. git push -u origin master推到github
 注意：github仓库创建时不要有readme也不要提交，第一次就要来源于vue项目，否则git会认为是两个项目，不给push
 
-
-
+**第一版只做了ui，下一步搞定时间，欢迎，和todolist吧**  
+![](https://cdn.jsdelivr.net/gh/mask2012/imgBed/20200429181257.png)
 
 
 

@@ -7,7 +7,7 @@
 
     <div class="region region_center">
       <div class="time">16:27</div>
-      <div class="greeting">晚上好, Mask</div>
+      <div class="greeting">下午好, Mask</div>
     </div>
 
     <div class="region region_center_below">
