@@ -14,20 +14,21 @@
       <div class="todo_list_holder">
         <div class="todo_list">
           <h3>今天的待做事项</h3>
-          <input type="text" data-test="focus-input" autocomplete="off" max-length="7" />
-          <ul>
-            <li class="li_done">修顺风电脑</li>
-            <li>找到袜子</li>
-            <li>修顺风电脑</li>
-            <li>找到袜子</li>
-            <li>修顺风电脑</li>
-            <li class="li_done">修顺风电脑</li>
-            <li>找到袜子</li>
-            <li>修顺风电脑</li>
-            <li>找到袜子</li>
-            <li>修顺风电脑</li>
-            <li>找到袜子</li>
-          </ul>
+          <input
+            type="text"
+            autocomplete="off"
+            maxlength="30"
+            v-model="newTodo"
+            @keyup.enter="addTodo"
+          />
+          <div class="todo_scroll">
+            <ul v-show="todos.length" v-cloak>
+              <li v-for="todo in todos" :key="todo.id" :class="{ li_done: todo.completed}">
+                <span @click="toggleTodo(todo)">{{ todo.title }}</span>
+                <i class="ico_destroy" @click="removeTodo(todo)"></i>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -39,21 +40,292 @@
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
 
+var STORAGE_KEY = "focustoday";
+var todoStorage = {
+  fetch: function() {
+    var todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    todos.forEach(function(todo, index) {
+      todo.id = index;
+    });
+    todoStorage.uid = todos.length;
+    return todos;
+  },
+  save: function(todos) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  }
+};
+
+
 export default {
   name: "App",
   components: {
     // HelloWorld
+  },
+  data() {
+    return {
+      todos: todoStorage.fetch(),
+      newTodo: "",
+      editedTodo: null,
+      visibility: "all"
+    };
+  },
+  // watch todos change for localStorage persistence
+  watch: {
+    todos: {
+      handler: function(todos) {
+        todoStorage.save(todos);
+      },
+      deep: true
+    }
+  },
+  // methods that implement data logic.
+  // note there's no DOM manipulation here at all.
+  methods: {
+    addTodo: function() {
+      var value = this.newTodo && this.newTodo.trim();
+      if (!value) {
+        return;
+      }
+      this.todos.push({
+        id: todoStorage.uid++,
+        title: value,
+        completed: false
+      });
+      this.newTodo = "";
+    },
+
+    removeTodo: function(todo) {
+      console.log(todo);
+      this.todos.splice(this.todos.indexOf(todo), 1);
+    },
+    toggleTodo: function(todo) {
+      const currentIndex=this.todos.indexOf(todo)
+      this.todos[currentIndex].completed=!this.todos[currentIndex].completed
+    },
+
+
+  },
+  mounted() {
+    
   }
 };
 </script>
 
 <style lang="less">
 /*reset*/
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}img,svg{vertical-align:top}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}a[href],label[for],select,input[type=checkbox],input[type=radio]{cursor:pointer}button,input[type=button],input[type=image],input[type=reset],input[type=submit]{padding:0;overflow:visible;cursor:pointer}button::-moz-focus-inner,input[type=button]::-moz-focus-inner,input[type=image]::-moz-focus-inner,input[type=reset]::-moz-focus-inner,input[type=submit]::-moz-focus-inner{border:0}.hide{position:absolute!important;left:-9999em!important}.clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0}h1,h2,h3,h4,h5,h6{font-weight:normal}.ie7 .clearfix{zoom:1}strong{font-weight:bold}em{font-style:italic}del{text-decoration:line-through}th,td{vertical-align:top}th{font-weight:normal;text-align:left}address,cite,dfn{font-style:normal}abbr,acronym{border-bottom:1px dotted #999;cursor:help}sub{line-height:0}sup{top:-0.5em}sub{bottom:-0.25em}textarea{overflow:auto}img{width: 100%; height: auto;}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+img,
+svg {
+  vertical-align: top;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a[href],
+label[for],
+select,
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+}
+button,
+input[type="button"],
+input[type="image"],
+input[type="reset"],
+input[type="submit"] {
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+}
+button::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="image"]::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner {
+  border: 0;
+}
+.hide {
+  position: absolute !important;
+  left: -9999em !important;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+.ie7 .clearfix {
+  zoom: 1;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+del {
+  text-decoration: line-through;
+}
+th,
+td {
+  vertical-align: top;
+}
+th {
+  font-weight: normal;
+  text-align: left;
+}
+address,
+cite,
+dfn {
+  font-style: normal;
+}
+abbr,
+acronym {
+  border-bottom: 1px dotted #999;
+  cursor: help;
+}
+sub {
+  line-height: 0;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+textarea {
+  overflow: auto;
+}
+img {
+  width: 100%;
+  height: auto;
+}
 
 body {
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  cursor:default
+  cursor: default;
 }
 body,
 html {
@@ -100,7 +372,7 @@ html {
   top: 0;
   width: 100%;
   height: 100%;
-  background: url(//area.sinaapp.com/bingImg) center center no-repeat;
+  background: #555 url(//area.sinaapp.com/bingImg) center center no-repeat;
   background-size: cover;
 }
 
@@ -113,13 +385,13 @@ html {
 
 .region_center {
   left: 0;
-  top: 42%;
+  top: 40%;
   transform: translate(0, -50%);
   text-align: center;
 }
 .region_center_below {
   left: 0;
-  top: 61%;
+  top: 58%;
   text-align: center;
 }
 .time {
@@ -130,55 +402,64 @@ html {
 }
 
 /*todoList*/
-.todo_list_holder{ display: flex; justify-content: center;}
-.todo_list h3{font-weight: normal; font-size: 180%;margin: 0 0 5px}
-.todo_list input {
-    width: 100%;
-    padding-top: 4px;
-    display: block;
-    background: 0;
-    border: 0;
-    border-bottom: 2px solid #fff;
-    color: #fff;
-    font-weight: 500;
-    outline: 0;
-    text-align: center;
-    transition: border-color .2s ease;
-    font-size: 137%;
-    line-height: 1.7;
-    margin-bottom: 30px;
+.todo_list_holder {
+  display: flex;
+  justify-content: center;
 }
-.todo_list ul{
+.todo_list h3 {
+  font-weight: normal;
+  font-size: 140%;
+  margin: 0 0 5px;
+}
+.todo_list input {
+  width: 100%;
+  padding-top: 4px;
+  display: block;
+  background: 0;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-weight: 500;
+  outline: 0;
+  text-align: center;
+  transition: border-color 0.2s ease;
+  font-size: 180%;
+  line-height: 1.5;
+  margin-bottom: 26px;
+}
+
+.todo_scroll{ background: rgba(0,0,0,.2); border-radius: 6px; padding: 15px 10px;}
+.todo_list ul {
   height: 190px;
   overflow-y: scroll;
-  font-size: 100%;
+  font-size: 110%;
 }
-.todo_list ul li:before{
-  content:'';
+.todo_list ul li:before {
+  content: "";
   display: inline-block;
-  margin-right: 4px;
+  margin-right: 8px;
   vertical-align: middle;
-  position: relative; top: -2px;
-  width: 17px;
-  height: 17px;
-  background: url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PHBhdGggZD0iTTUxMiA5NjBDMjY0Ljk2IDk2MCA2NCA3NTkuMDQgNjQgNTEyUzI2NC45NiA2NCA1MTIgNjRzNDQ4IDIwMC45NiA0NDggNDQ4LTIwMC45NiA0NDgtNDQ4IDQ0OHptMC04MzJjLTIxMS43NDQgMC0zODQgMTcyLjI1Ni0zODQgMzg0czE3Mi4yNTYgMzg0IDM4NCAzODQgMzg0LTE3Mi4yNTYgMzg0LTM4NC0xNzIuMjU2LTM4NC0zODQtMzg0eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==);
+  position: relative;
+  top: -1px;
+  width: 20px;
+  height: 20px;
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNSAyQzMuMzQ2IDIgMiAzLjM0NiAyIDV2MTRjMCAxLjY1NCAxLjM0NiAzIDMgM2gxNGMxLjY1NCAwIDMtMS4zNDYgMy0zVjVjMC0xLjY1NC0xLjM0Ni0zLTMtM0g1em0xOSAzdjE0YTUgNSAwIDAgMS01IDVINWE1IDUgMCAwIDEtNS01VjVhNSA1IDAgMCAxIDUtNWgxNGE1IDUgMCAwIDEgNSA1eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==);
   background-size: 100% auto;
 }
-.todo_list ul li{
-  margin-bottom: 5px;
+.todo_list ul li {
+  margin-bottom: 14px;
+  line-height: 1.1;
 }
-.todo_list ul li:hover{
+.todo_list ul li:hover {
   color: #eee;
 }
-.todo_list ul li.li_done{
+.todo_list ul li.li_done {
   text-decoration: line-through;
   color: #eee;
 }
-.todo_list ul li.li_done:before{
-  background: url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PHBhdGggZD0iTTUxMiA5NjBDMjY0Ljk2IDk2MCA2NCA3NTkuMDQgNjQgNTEyUzI2NC45NiA2NCA1MTIgNjRzNDQ4IDIwMC45NiA0NDggNDQ4LTIwMC45NiA0NDgtNDQ4IDQ0OHptMC04MzEuNzEyYy0yMTEuNTg0IDAtMzgzLjcxMiAxNzIuMTI4LTM4My43MTIgMzgzLjcxMiAwIDIxMS41NTIgMTcyLjEyOCAzODMuNzEyIDM4My43MTIgMzgzLjcxMiAyMTEuNTUyIDAgMzgzLjcxMi0xNzIuMTYgMzgzLjcxMi0zODMuNzEyUzcyMy41NTIgMTI4LjI4OCA1MTIgMTI4LjI4OHptMjE0Ljk3NiAyNjQuODk2YTMxLjk2OCAzMS45NjggMCAwIDAtNDUuMjQ4LjI1NmwtMjMzLjI4IDIzNS44NC0xMDMuMjY0LTEwNi4xMTJhMzIgMzIgMCAxIDAtNDUuODg4IDQ0LjYwOEw0MjUuMzEyIDY5Ny4yOGMuMDY0LjA5Ni4xOTIuMDk2LjI1Ni4xOTJsLjE2LjI1NmMyLjAxNiAxLjk4NCA0LjUxMiAzLjIgNi44OCA0LjU0NCAxLjI0OC42NzIgMi4yNCAxLjc5MiAzLjUyIDIuMzA0YTMxLjc0NCAzMS43NDQgMCAwIDAgMjQuMDY0LjA2NGMxLjI0OC0uNTEyIDIuMjA4LTEuNTM2IDMuMzkyLTIuMTc2IDIuNC0xLjM0NCA0Ljg5Ni0yLjUyOCA2Ljk0NC00LjU0NC4wNjQtLjA2NC4wOTYtLjE5Mi4xOTItLjI1Ni4wNjQtLjA5Ni4xNi0uMTI4LjI1Ni0uMTkyTDcyNy4yIDQzOC40NjRhMzIuMDMyIDMyLjAzMiAwIDAgMC0uMjI0LTQ1LjI4eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==);
+.todo_list ul li.li_done:before {
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTAuMDQxIDE3bC00LjUtNC4zMTkgMS4zOTUtMS40MzUgMy4wOCAyLjkzN0wxNy4wMzcgN2wxLjQyMiAxLjQwOUwxMC4wNDEgMTd6TTUgMkMzLjM0NiAyIDIgMy4zNDYgMiA1djE0YzAgMS42NTQgMS4zNDYgMyAzIDNoMTRjMS42NTQgMCAzLTEuMzQ2IDMtM1Y1YzAtMS42NTQtMS4zNDYtMy0zLTNINXptMTkgM3YxNGE1IDUgMCAwIDEtNSA1SDVhNSA1IDAgMCAxLTUtNVY1YTUgNSAwIDAgMSA1LTVoMTRhNSA1IDAgMCAxIDUgNXoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=);
   background-size: 100% auto;
 }
-
-
-
+.ico_destroy{ display: inline-block; vertical-align: middle; margin-left: 15px; position: relative; top: -2px; width: 20px; height: 20px; background: url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwNDUgMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjA0LjEwMiIgaGVpZ2h0PSIyMDAiPjxwYXRoIGQ9Ik0yODIuNTE3IDIxMy4zNzZsLTQ1LjM1NCA0NS4xNjNMNDg5LjQ3MiA1MTJsLTI1Mi4zMSAyNTMuNDYxIDQ1LjM1NSA0NS4xNjMgMjUyLjA5Ni0yNTMuMjcgMjUyLjA5NiAyNTMuMjcgNDUuMzU1LTQ1LjE2My0yNTIuMjg4LTI1My40NEw4MzIuMDY0IDI1OC41NGwtNDUuMzU1LTQ1LjE2My0yNTIuMDk2IDI1My4yNDgtMjUyLjA5Ni0yNTMuMjI3eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==); background-size: 100% auto;}
 </style>
