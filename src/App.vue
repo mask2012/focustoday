@@ -450,6 +450,7 @@ html {
 .todo_list ul li {
   margin-bottom: 14px;
   line-height: 1.1;
+  cursor: pointer;
 }
 .todo_list ul li:hover {
   color: #eee;
@@ -462,5 +463,6 @@ html {
   background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTAuMDQxIDE3bC00LjUtNC4zMTkgMS4zOTUtMS40MzUgMy4wOCAyLjkzN0wxNy4wMzcgN2wxLjQyMiAxLjQwOUwxMC4wNDEgMTd6TTUgMkMzLjM0NiAyIDIgMy4zNDYgMiA1djE0YzAgMS42NTQgMS4zNDYgMyAzIDNoMTRjMS42NTQgMCAzLTEuMzQ2IDMtM1Y1YzAtMS42NTQtMS4zNDYtMy0zLTNINXptMTkgM3YxNGE1IDUgMCAwIDEtNSA1SDVhNSA1IDAgMCAxLTUtNVY1YTUgNSAwIDAgMSA1LTVoMTRhNSA1IDAgMCAxIDUgNXoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=);
   background-size: 100% auto;
 }
-.ico_destroy{ display: inline-block; vertical-align: middle; margin-left: 15px; position: relative; top: -2px; width: 20px; height: 20px; background: url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwNDUgMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjA0LjEwMiIgaGVpZ2h0PSIyMDAiPjxwYXRoIGQ9Ik0yODIuNTE3IDIxMy4zNzZsLTQ1LjM1NCA0NS4xNjNMNDg5LjQ3MiA1MTJsLTI1Mi4zMSAyNTMuNDYxIDQ1LjM1NSA0NS4xNjMgMjUyLjA5Ni0yNTMuMjcgMjUyLjA5NiAyNTMuMjcgNDUuMzU1LTQ1LjE2My0yNTIuMjg4LTI1My40NEw4MzIuMDY0IDI1OC41NGwtNDUuMzU1LTQ1LjE2My0yNTIuMDk2IDI1My4yNDgtMjUyLjA5Ni0yNTMuMjI3eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==); background-size: 100% auto;}
+.todo_list ul li.li_done .ico_destroy{ opacity: 1; pointer-events: auto;}
+.ico_destroy{ display: inline-block; opacity: 0; pointer-events: none; vertical-align: middle; margin-left: 15px; position: relative; top: -2px; width: 20px; height: 20px; background: url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwNDUgMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjA0LjEwMiIgaGVpZ2h0PSIyMDAiPjxwYXRoIGQ9Ik0yODIuNTE3IDIxMy4zNzZsLTQ1LjM1NCA0NS4xNjNMNDg5LjQ3MiA1MTJsLTI1Mi4zMSAyNTMuNDYxIDQ1LjM1NSA0NS4xNjMgMjUyLjA5Ni0yNTMuMjcgMjUyLjA5NiAyNTMuMjcgNDUuMzU1LTQ1LjE2My0yNTIuMjg4LTI1My40NEw4MzIuMDY0IDI1OC41NGwtNDUuMzU1LTQ1LjE2My0yNTIuMDk2IDI1My4yNDgtMjUyLjA5Ni0yNTMuMjI3eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==); background-size: 100% auto;}
 </style>
