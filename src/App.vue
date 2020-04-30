@@ -7,13 +7,13 @@
 
     <div class="region region_center">
       <div class="time">16:27</div>
-      <div class="greeting">下午好, Mask</div>
+      <div class="greeting">Good morning, Mask.</div>
     </div>
 
     <div class="region region_center_below">
       <div class="todo_list_holder">
         <div class="todo_list">
-          <h3>今天的待做事项</h3>
+          <h3>What is your main focus for today?</h3>
           <input
             type="text"
             autocomplete="off"
@@ -372,7 +372,8 @@ html {
   top: 0;
   width: 100%;
   height: 100%;
-  background: #555 url(//area.sinaapp.com/bingImg) center center no-repeat;
+  background: url(assets/bg1.jpg);
+  // background: #555 url(//area.sinaapp.com/bingImg) center center no-repeat;
   background-size: cover;
 }
 
@@ -395,10 +396,10 @@ html {
   text-align: center;
 }
 .time {
-  font-size: 800%;
+  font-size: 1040%;
 }
 .greeting {
-  font-size: 300%;
+  font-size: 330%;
 }
 
 /*todoList*/
@@ -408,7 +409,7 @@ html {
 }
 .todo_list h3 {
   font-weight: normal;
-  font-size: 140%;
+  font-size: 194%;
   margin: 0 0 5px;
 }
 .todo_list input {

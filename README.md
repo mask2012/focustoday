@@ -1,23 +1,24 @@
 # focusToday 
-a chrome crx main focus on todo list everyday
-发现chrome插件momentum挺好用的，不过todoList多写一条都要收费，一年200，还挺贵，咱自己写一个还不行吗，说干就干，我先整个基础版的，但起码可以无拘无束写todo list呀
+a chrome crx main focus on todo list everyday  
+发现chrome插件momentum挺好用的，不过todoList多写一条都要收费，一年200，还挺贵  
+咱自己写一个还不行吗，说干就干，我先整个基础版的，但起码可以无拘无束写todo list呀
 
 
-## 需求分析
-**基本需求**
+## 需求分析  
+**基本需求**  
 1. 初次进入引导，询问名字
 2. 时间展示 ✓ui
 3. 问候语 ✓ui
 4. 背景图一日一换 ✓
 
-**高级需求**
+**高级需求**  
 1. todoList  ✓ ui
 2. 格言一日一换
 3. 常用工具 ★★
 4. 天气播报
 
 
-## 开发过程记录
+## 开发过程记录  
 **天气接口**  
 https://www.sojson.com/blog/305.html
 
@@ -48,8 +49,12 @@ vue项目关联github仓库还挺坑，没法用git小乌龟完成，步骤如�
 
 
 
+**晚上把todo list做好了**  
+参照了[vue官方的todo demo](https://www.cnblogs.com/jyyzzjl/p/6252279.html)，砍掉了很多功能，我只需要基础的  
+![](https://cdn.jsdelivr.net/gh/mask2012/imgBed/20200430091937.png)
 
 
+突发奇想我可以把todo 列表做成如果条数多就字大，条数少就字小，总之会去适配
 
 
 
