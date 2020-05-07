@@ -73,7 +73,7 @@ https://www.cnblogs.com/vicky-li/p/css.html
 
 
 
-**设计logo**
+**设计logo**  
 花了半个小时就搞定了logo，不得不说，中文logo制作的都是一坨屎  
 google搜logo generator出来的结果是真心牛逼，不过竟然是收费的，好在小图我也勉强够用了  
 https://editor.freelogodesign.org/?lang=en&companyname=focus&category=0  
@@ -161,7 +161,7 @@ https://www.jianshu.com/p/9c4a552cc984
 }
 ```
 
-**安装插件**
+**安装插件**  
 现在已经不可以直接拖拽crx进行安装了  
 那么不要钱的让对方使用你的插件的方法是：
 1. 打包成zip传给对方
@@ -173,7 +173,7 @@ https://www.jianshu.com/p/9c4a552cc984
 在文件结构上，本来想把manifest.json放在根目录，无奈导入的时候提示我node_modules里有报错  
 那就只能放在dist目录里了，缺点是每次build后需要手动copy一些文件进去  
 
-**vue项目修改页面title**
+**vue项目修改页面title**  
 算一个小坑吧，修改package.json是可行的，但不能有空格，要求很严格  
 另一个方法是新增vue.config.js文件，内容如下  
 只需要把必要的填进去就可以了，我只是为了改个页面title而已
