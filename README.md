@@ -40,20 +40,6 @@ background-size: cover;
 顺便找到了bing一日一壁纸的列表   
  http://bing.plmeizi.com/
 
-
-**谷歌应用商店chrome扩展程序和APP的发布流程**   
-https://chromecj.com/utilities/2018-05/1406.html
-
-**360官方的插件开发文档**  
-http://open.chrome.360.cn/extension_dev/overview.html
-
-**这个cliper插件实战教程很不错**  
-https://github.com/ecmadao/Coding-Guide/blob/master/Notes/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/Chrome%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91.md
-
-**打开新tab即打开本地页面**
-在这篇文章里终于找到了overrides这个参数来覆盖新tab达到我想要的效果
-https://www.jianshu.com/p/9c4a552cc984
-
 **vue项目传到github小坑**  
 vue项目关联github仓库还挺坑，没法用git小乌龟完成，步骤如下
 1. 新建vue项目时勾选“初始化git仓库”（默认是勾选的），这样就不需要自己去git bash here然后git init了
@@ -112,7 +98,7 @@ https://unsplash.com/developers
 demo版的限制是一小时50次；高级版一小时5k次，你只需要按照他的要求使用，比如必须注明图片源于unsplash，写明作者，等等等等
 https://help.unsplash.com/en/articles/3887917-when-should-i-apply-for-a-higher-rate-limit
 
-接下来是unsplash的使用方法
+接下来是unsplash的使用方法  
 https://github.com/unsplash/unsplash-js
 
 调用api后发现下载还是挺慢的，也没法直接满足我一日换一张的需求  
@@ -122,9 +108,9 @@ https://github.com/unsplash/unsplash-js
 想访问unsplash也是打不开了，悲剧。  
 在中国做任何正常的事情都很不容易，直接使用unsplash估计是没戏了
 
-由此也发现了好多图片站  
+由此也发现了好多图片站    
 国外的  
-https://www.liaosam.com/free-hd-photo-stocks.html
+https://www.liaosam.com/free-hd-photo-stocks.html  
 国内的  
 https://www.zhihu.com/question/265481379
 
@@ -138,3 +124,81 @@ https://blog.csdn.net/qq_41536331/article/details/81028749
 4. 为了保证图片不会占满github仓库，只需保留7张图片，定时删除无用的图片
 5. 保证爬取，上传，更新配置，删除无用图片流程不间断自动执行
 
+
+**处理成插件**   
+
+360官方的插件开发文档  
+http://open.chrome.360.cn/extension_dev/overview.html
+
+这个cliper插件实战教程很不错  
+https://github.com/ecmadao/Coding-Guide/blob/master/Notes/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/Chrome%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91.md
+
+这一篇也写了很多心得  
+https://www.jianshu.com/p/9c4a552cc984
+
+**打开新tab即打开本地页面**  
+做成插件，基本就是增加一个manifest.json文件，然后加入一些配置，然后再弄一些文件  
+在这篇文章里终于找到了overrides这个参数来覆盖新tab达到我想要的效果  
+https://www.jianshu.com/p/9c4a552cc984  
+
+**最终成型的manifest.json是这样的**  
+```json
+{
+    "name": "focusToday",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "focus today is a todo list with backgrounds when new tab",
+    "author": "mask",
+    "icons": {
+        "16": "icon_16.png",
+        "128": "icon_128.png"
+    },
+    "permissions": [
+    ],
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    }
+}
+```
+
+**安装插件**
+现在已经不可以直接拖拽crx进行安装了  
+那么不要钱的让对方使用你的插件的方法是：
+1. 打包成zip传给对方
+2. 对方解压此zip
+3. 管理扩展程序-->开发者模式-->加载已解压的扩展程序
+4. 找到解压目录，即可导入
+
+**文件结构**  
+在文件结构上，本来想把manifest.json放在根目录，无奈导入的时候提示我node_modules里有报错  
+那就只能放在dist目录里了，缺点是每次build后需要手动copy一些文件进去  
+
+**vue项目修改页面title**
+算一个小坑吧，修改package.json是可行的，但不能有空格，要求很严格  
+另一个方法是新增vue.config.js文件，内容如下  
+只需要把必要的填进去就可以了，我只是为了改个页面title而已
+```js
+module.exports = {
+    pages: {
+      index: {
+        // entry for the page
+        entry: 'src/main.js',
+        // the source template
+        template: 'public/index.html',
+        // output as dist/index.html
+        // filename: 'index.html',
+        // when using title option,
+        // template title tag needs to be <title><%= htmlWebpackPlugin.options.title %></title>
+        title: 'New tab',
+        // chunks to include on this page, by default includes
+        // extracted common chunks and vendor chunks.
+        // chunks: ['chunk-vendors', 'chunk-common', 'index']
+      },
+      // when using the entry-only string format,
+      // template is inferred to be `public/subpage.html`
+      // and falls back to `public/index.html` if not found.
+      // Output filename is inferred to be `subpage.html`.
+    //   subpage: 'src/subpage/main.js'
+    }
+  }
+  ```

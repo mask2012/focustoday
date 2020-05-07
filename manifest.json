@@ -9,8 +9,6 @@
         "128": "icon_128.png"
     },
     "permissions": [
-        "tab",
-        "http://localhost:5000/*"
     ],
     "chrome_url_overrides": {
         "newtab": "index.html"
