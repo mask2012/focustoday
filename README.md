@@ -47,8 +47,12 @@ https://chromecj.com/utilities/2018-05/1406.html
 **360官方的插件开发文档**  
 http://open.chrome.360.cn/extension_dev/overview.html
 
+**这个cliper插件实战教程很不错**  
+https://github.com/ecmadao/Coding-Guide/blob/master/Notes/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/Chrome%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91.md
+
 **打开新tab即打开本地页面**
-https://segmentfault.com/q/1010000009002314
+在这篇文章里终于找到了overrides这个参数来覆盖新tab达到我想要的效果
+https://www.jianshu.com/p/9c4a552cc984
 
 **vue项目传到github小坑**  
 vue项目关联github仓库还挺坑，没法用git小乌龟完成，步骤如下
