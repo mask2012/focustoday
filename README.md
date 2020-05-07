@@ -19,11 +19,18 @@ a chrome crx main focus on todo list everyday
 5. 白屏页
 
 
-## 开发过程记录  
+## 开发过程记录 
+
 **天气接口**  
 https://www.sojson.com/blog/305.html
 
+[彩云天气](http://wiki.swarma.net/index.php/%E5%BD%A9%E4%BA%91%E5%A4%A9%E6%B0%94API/v2) - 支持全球天气数据，两种空气质量数据，天气预报，实况天气，独家降水预报，独家空气质量预报，六种天气数据，四种生活指数数据等内容，部分功能收费。
+[和风天气](http://www.kancloud.cn/hefengyun/weather/222344) - 支持7-10天预报，实况天气，每小时预报，生活指数，灾害预警，景点天气，历史天气，城市查询等内容，仅国内数据免费。
+[心知天气](http://www.thinkpage.cn/doc) - 支持天气实况，逐日预报和历史，24小时逐小时预报，过去24小时天气历史记录，气象灾害预警，空气质量实况与城市排行，逐日和逐小时空气质量预报，过去24小时空气质量历史记录，生活指数，农历、节气、生肖，机动车尾号限行，日出日落，月初月落和月像，城市搜索等内容，仅国内数据免费。
+
+
 **背景图-一日一换，访问即可**  
+最简单的做法就是直接使用bing的图片，不过质量不算太好，先凑合用
 ```css
 background: url(//area.sinaapp.com/bingImg) center center no-repeat; 
 background-size: cover;
@@ -32,11 +39,15 @@ background-size: cover;
 顺便找到了bing一日一壁纸的列表   
  http://bing.plmeizi.com/
 
+
 **谷歌应用商店chrome扩展程序和APP的发布流程**   
 https://chromecj.com/utilities/2018-05/1406.html
 
 **360官方的插件开发文档**  
 http://open.chrome.360.cn/extension_dev/overview.html
+
+**打开新tab即打开本地页面**
+https://segmentfault.com/q/1010000009002314
 
 **vue项目传到github小坑**  
 vue项目关联github仓库还挺坑，没法用git小乌龟完成，步骤如下
@@ -101,9 +112,9 @@ https://github.com/unsplash/unsplash-js
 
 调用api后发现下载还是挺慢的，也没法直接满足我一日换一张的需求  
 使用unsplash的api能实现的就是2种思路  
-一种是search关键字，一种是手动加入collection，然后请求时带上page，实现这个page就会比较麻烦  
+一种是search关键字，一种是手动加入collection，请求时都需要带上page，实现这个page就会比较麻烦  
 
-由此发现了好多图片站  
+由此也发现了好多图片站  
 国外的  
 https://www.liaosam.com/free-hd-photo-stocks.html
 国内的  
