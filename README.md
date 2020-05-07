@@ -113,7 +113,10 @@ https://github.com/unsplash/unsplash-js
 
 调用api后发现下载还是挺慢的，也没法直接满足我一日换一张的需求  
 使用unsplash的api能实现的就是2种思路  
-一种是search关键字，一种是手动加入collection，请求时都需要带上page，实现这个page就会比较麻烦  
+一种是search关键字，一种是手动加入collection，请求时都需要带上page，实现这个page就会比较麻烦   
+在实际的使用中发现api特别慢，图片下载也特别慢，最后api直接就挂了，
+想访问unsplash也是打不开了，悲剧。  
+在中国做任何正常的事情都很不容易，直接使用unsplash估计是没戏了
 
 由此也发现了好多图片站  
 国外的  

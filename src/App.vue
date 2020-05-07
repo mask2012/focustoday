@@ -2,7 +2,8 @@
   <div id="app">
     <div class="background_holder">
       <span class="bg_shadow fadein"></span>
-      <span class="bg_img fadein" :style="'background:url('+bgImg+') center center/cover no-repeat'"></span>
+      <span class="bg_img fadein"></span>
+      <!-- <span class="bg_img fadein" :style="'background:url('+bgImg+') center center/cover no-repeat'"></span> -->
     </div>
 
     <div class="region region_center">
@@ -143,6 +144,8 @@ export default {
   mounted() {
     this.liHeight = this.listHeight / this.todos.length;
     this.liFontSize = (this.listHeight * 0.8) / this.todos.length;
+    this.liFontSize =
+      this.liFontSize > 40 ? 40 + this.liFontSize / 10 : this.liFontSize;
 
     window.onresize = () => {
       this.listHeight = document.documentElement.clientHeight * 0.2;
@@ -161,7 +164,7 @@ export default {
       .then(toJson)
       .then(json => {
         console.log("json", json);
-        this.bgImg=json.urls.regular
+        this.bgImg = json.urls.regular;
       });
   }
 };
