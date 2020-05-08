@@ -202,3 +202,53 @@ module.exports = {
     }
   }
   ```
+
+**国内时间和国外时间**  
+这个挺有意思，做的时候才了解得这么细  
+这是国内的  
+```js
+moment.updateLocale("zh-cn", {
+  meridiem: function(hour, minute) {
+    if (hour < 9) {
+      return "早上";
+    } else if (hour < 11 && minute < 30) {
+      return "上午";
+    } else if (hour < 13 && minute < 30) {
+      return "中午";
+    } else if (hour < 18) {
+      return "下午";
+    } else {
+      return "晚上";
+    }
+  }
+});
+this.greetingTxt = moment().format("a");
+```
+
+这是国外的  
+```js
+moment.updateLocale("en", {
+  meridiem: function(hour) {
+    if (hour < 12) {
+      return "good morning";  //从子夜持续至中午或从太阳升起时持续到中午
+    }else if (hour >= 12 && hour < 18) {
+      //When it comes to greeting someone, Noon is used in the same context under "afternoon". You never hear anyone saying "Good Noon", it's always "Good Afternoon" when PM strikes.  Noon is midday or 12:00pm sharp. Anything beyond 12:00 pm until roughly around 5:00-5:30pm is afternoon.
+      return "good afternoon";
+    } else if (hour >= 18 && hour < 20) {
+      return "good evening"; //从下午到夜晚日光逐渐减弱的时期
+    } else {
+      return "good night";  //指晚上8点之后，一般是夜间看不到太阳的时间段
+    }
+  }
+});
+this.greetingTxt = moment().format("a");
+```
+
+**切换输入和增加按钮**  
+发现vue的transition用来做些小动画还真的是方便啊，  
+特别是在有一组元素来回切的时候  
+参考 https://cn.vuejs.org/v2/guide/transitions.html  
+做出来的效果是这样的  
+
+
+
