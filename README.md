@@ -8,8 +8,8 @@ a chrome crx main focus on todo list everyday
 **基本需求**  
 1. 初次进入引导，询问名字
 2. 时间展示 ✓
-3. 问候语 ✓ui
-4. 背景图一日一换 ✓
+3. 问候语 ✓
+4. 背景图一日一换 ✓half
 
 **高级需求**  
 1. todoList  ✓
@@ -253,6 +253,27 @@ this.greetingTxt = moment().format("a");
 
 做出来的效果是这样的  
 ![](https://cdn.jsdelivr.net/gh/mask2012/imgBed/focus_gif2.gif)  
+
+觉得不太好，换成fade感觉更好一点  
+![](https://cdn.jsdelivr.net/gh/mask2012/imgBed/focus_gif3.gif)  
+这里边有2个细节  
+1. 出场持续时间短，先慢后快，入场持续时间长，先快后慢，符合肉眼看到的事物规律
+2. 注意css优先级的坑，加了transition的元素的class名前边就不要再有限制了，否则下边的这一段会压不过原有的，就不会有动画效果
+
+```css
+/* 进场  https://cubic-bezier.com/#.43,.08,.6,.93 */
+.inputTrans-enter-active {
+  transition: all 0.5s cubic-bezier(.43,.08,.6,.93);
+}
+/* 出场 */
+.inputTrans-leave-active {
+  transition: all 0.3s cubic-bezier(.11,.42,.76,.78);
+}
+/* 端点 */
+.inputTrans-enter, .inputTrans-leave-to{
+  opacity:0;
+}
+```
 
 
 

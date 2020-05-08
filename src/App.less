@@ -100,26 +100,6 @@ html {
     margin     : 0 0 5px;
   }
 
-  .todo_input {
-    width     : 30rem;
-    opacity: 1;
-  }
-
-  .todo_add {
-    width          : 2.6rem;
-    height         : 2.6rem;
-    background     : url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTg4OTA2MDAyNjg2IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjM4NTMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNODI4LjcwNCAxOTYuNTc2Yy04NC42MDgtODQuMTkyLTE5Ny4wNTYtMTMwLjU2LTMxNi43MDQtMTMwLjU2cy0yMzIuMTI4IDQ2LjM2OC0zMTYuNzM2IDEzMC41NkE0NDIuMDggNDQyLjA4IDAgMCAwIDY0IDUxMmMwIDExOS4yIDQ2LjYyNCAyMzEuMiAxMzEuMjMyIDMxNS40MjRzMTk3LjA4OCAxMzAuNTYgMzE2LjczNiAxMzAuNTYgMjMyLjEyOC00Ni4zNjggMzE2LjcwNC0xMzAuNTZhNDQxLjkyIDQ0MS45MiAwIDAgMCAxMzEuMjY0LTMxNS40NTYgNDQxLjY5NiA0NDEuNjk2IDAgMCAwLTEzMS4yMzItMzE1LjM5MnpNNzM2IDU0NGgtMTkydjE5MmEzMiAzMiAwIDEgMS02NCAwdi0xOTJIMjg4YTMyIDMyIDAgMCAxIDAtNjRoMTkyVjI4OGEzMiAzMiAwIDAgMSA2NCAwdjE5MmgxOTJhMzIgMzIgMCAxIDEgMCA2NHoiIHAtaWQ9IjM4NTQiIGZpbGw9IiNmZmZmZmYiPjwvcGF0aD48L3N2Zz4=") 0 0 no-repeat;
-    background-size: 100% auto;
-    margin-bottom  : 1.5rem;
-    transition     : height 0.2s;
-    overflow       : hidden;
-    cursor         : pointer;
-    opacity        : 0.8;
-  }
-  .todo_add:hover {
-    opacity: 1;
-  }
-
   input {
     width        : 100%;
     padding-top  : 4px;
@@ -138,8 +118,29 @@ html {
   }
 }
 
+.todo_input {
+  width     : 30rem;
+  opacity: 1;
+}
+
+.todo_add {
+  width          : 2.6rem;
+  height         : 2.6rem;
+  background     : url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTg4OTA2MDAyNjg2IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjM4NTMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNODI4LjcwNCAxOTYuNTc2Yy04NC42MDgtODQuMTkyLTE5Ny4wNTYtMTMwLjU2LTMxNi43MDQtMTMwLjU2cy0yMzIuMTI4IDQ2LjM2OC0zMTYuNzM2IDEzMC41NkE0NDIuMDggNDQyLjA4IDAgMCAwIDY0IDUxMmMwIDExOS4yIDQ2LjYyNCAyMzEuMiAxMzEuMjMyIDMxNS40MjRzMTk3LjA4OCAxMzAuNTYgMzE2LjczNiAxMzAuNTYgMjMyLjEyOC00Ni4zNjggMzE2LjcwNC0xMzAuNTZhNDQxLjkyIDQ0MS45MiAwIDAgMCAxMzEuMjY0LTMxNS40NTYgNDQxLjY5NiA0NDEuNjk2IDAgMCAwLTEzMS4yMzItMzE1LjM5MnpNNzM2IDU0NGgtMTkydjE5MmEzMiAzMiAwIDEgMS02NCAwdi0xOTJIMjg4YTMyIDMyIDAgMCAxIDAtNjRoMTkyVjI4OGEzMiAzMiAwIDAgMSA2NCAwdjE5MmgxOTJhMzIgMzIgMCAxIDEgMCA2NHoiIHAtaWQ9IjM4NTQiIGZpbGw9IiNmZmZmZmYiPjwvcGF0aD48L3N2Zz4=") 0 0 no-repeat;
+  background-size: 100% auto;
+  margin-bottom  : 1.5rem;
+  transition     : height 0.2s;
+  overflow       : hidden;
+  cursor         : pointer;
+  opacity        : 0.8;
+}
+.todo_add:hover {
+  opacity: 1;
+}
+
 
 .todo_scroll {
+  width: 100%;
   text-align: center;
 
   ul {
@@ -186,22 +187,22 @@ html {
   }
 }
 
-.todo_scroll ul::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius     : 5px;
-  background-color  : transparent;
-}
+// .todo_scroll ul::-webkit-scrollbar-track {
+//   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//   border-radius     : 5px;
+//   background-color  : transparent;
+// }
 
-.todo_scroll ul::-webkit-scrollbar {
-  width           : 10px;
-  background-color: transparent;
-}
+// .todo_scroll ul::-webkit-scrollbar {
+//   width           : 10px;
+//   background-color: transparent;
+// }
 
-.todo_scroll ul::-webkit-scrollbar-thumb {
-  border-radius     : 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-  background-color  : #eee;
-}
+// .todo_scroll ul::-webkit-scrollbar-thumb {
+//   border-radius     : 10px;
+//   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+//   background-color  : #eee;
+// }
 
 .ico_destroy {
   display           : inline-block;
@@ -218,14 +219,15 @@ html {
 }
 
 
-/* 切换动画 */
+/* 进场  https://cubic-bezier.com/#.43,.08,.6,.93 */
 .inputTrans-enter-active {
-  transition: fade .6s ease;
+  transition: all 0.5s cubic-bezier(.43,.08,.6,.93);
 }
+/* 出场 */
 .inputTrans-leave-active {
-  // transition: height .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-  transition: fade .6s ease;
+  transition: all 0.3s cubic-bezier(.11,.42,.76,.78);
 }
+/* 端点 */
 .inputTrans-enter, .inputTrans-leave-to{
   opacity:0;
 }
