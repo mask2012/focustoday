@@ -102,9 +102,7 @@ html {
 
   .todo_input {
     width     : 30rem;
-    transition: height 0.5s;
-    height    : 7rem;
-    overflow  : hidden;
+    opacity: 1;
   }
 
   .todo_add {
@@ -121,18 +119,6 @@ html {
   .todo_add:hover {
     opacity: 1;
   }
-
-  .heightSlide-enter-active {
-    transition: height .3s ease;
-  }
-  .heightSlide-leave-active {
-    // transition: height .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-    transition: height .3s ease;
-  }
-  .heightSlide-enter, .heightSlide-leave-to{
-    height:0;
-  }
-
 
   input {
     width        : 100%;
@@ -229,4 +215,17 @@ html {
   height            : 1em;
   background        : url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwNDUgMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjA0LjEwMiIgaGVpZ2h0PSIyMDAiPjxwYXRoIGQ9Ik0yODIuNTE3IDIxMy4zNzZsLTQ1LjM1NCA0NS4xNjNMNDg5LjQ3MiA1MTJsLTI1Mi4zMSAyNTMuNDYxIDQ1LjM1NSA0NS4xNjMgMjUyLjA5Ni0yNTMuMjcgMjUyLjA5NiAyNTMuMjcgNDUuMzU1LTQ1LjE2My0yNTIuMjg4LTI1My40NEw4MzIuMDY0IDI1OC41NGwtNDUuMzU1LTQ1LjE2My0yNTIuMDk2IDI1My4yNDgtMjUyLjA5Ni0yNTMuMjI3eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==);
   background-size   : 100% auto;
+}
+
+
+/* 切换动画 */
+.inputTrans-enter-active {
+  transition: fade .6s ease;
+}
+.inputTrans-leave-active {
+  // transition: height .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: fade .6s ease;
+}
+.inputTrans-enter, .inputTrans-leave-to{
+  opacity:0;
 }

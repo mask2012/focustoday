@@ -245,10 +245,15 @@ this.greetingTxt = moment().format("a");
 ```
 
 **切换输入和增加按钮**  
-发现vue的transition用来做些小动画还真的是方便啊，  
-特别是在有一组元素来回切的时候  
 参考 https://cn.vuejs.org/v2/guide/transitions.html  
+发现vue的transition用来做些小动画还真的是方便啊
+关键就是记住这张图  
+![](https://cdn.jsdelivr.net/gh/mask2012/imgBed/20200508145556.png)  
+特别是在有一组元素来回切的时候，制作不要太方便
+
 做出来的效果是这样的  
+![](https://cdn.jsdelivr.net/gh/mask2012/imgBed/focus_gif2.gif)  
+
 
 
 

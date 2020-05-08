@@ -13,7 +13,7 @@
 
     <div class="region region_center_below">
       <div class="todo_list">
-        <transition name="heightSlide" mode="out-in">
+        <transition name="inputTrans" mode="out-in">
           <div class="todo_input" v-if="isShowInput" key="keyInput">
             <h3>What is your main focus for today?</h3>
             <input
