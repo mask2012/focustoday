@@ -133,6 +133,10 @@ export default {
     removeTodo: function(todo) {
       console.log(todo);
       this.todos.splice(this.todos.indexOf(todo), 1);
+      //todo清为0后，展示input
+      if(this.todos.length==0){
+        this.isShowInput=true
+      }
     },
     toggleTodo: function(todo) {
       const currentIndex = this.todos.indexOf(todo);
@@ -150,7 +154,6 @@ export default {
     },
     toggleInput() {
       this.isShowInput = !this.isShowInput;
-      console.log("this.isShowInput", this.isShowInput);
     },
     initClockAndGreeting() {
       moment.updateLocale("en", {
@@ -184,6 +187,9 @@ export default {
 
     //初始化clock和greeting
     this.initClockAndGreeting();
+
+    //
+    this.isShowInput=this.todos.length==0
   }
 };
 </script>
