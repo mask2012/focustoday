@@ -2,9 +2,9 @@
 a chrome crx main focus on todo list everyday  
 发现chrome插件momentum挺好用的，不过todoList多写一条都要收费，一年200，还挺贵  
 咱自己写一个还不行吗，说干就干，我先整个基础版的，但起码可以无拘无束写todo list呀
+ 
 
-
-## 需求分析  
+## 需求分析   
 **基本需求**  
 1. 初次进入引导，询问名字
 2. 时间展示 ✓
